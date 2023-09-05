@@ -205,8 +205,6 @@ while True:
             random_index = random.randrange(len(crypt) + 1)
             crypt = crypt[:random_index] + random_char + crypt[random_index:]
 
-
-
         crypt = ''.join(random.choice([str.upper, str.lower])(char) for char in crypt)
         line = len(crypt) + 6
         line = "-" * line
@@ -223,8 +221,6 @@ while True:
         print("spec: " + crypt)
         print()
         print()
-
-        # break
 
     elif (x == "q"):
         break
