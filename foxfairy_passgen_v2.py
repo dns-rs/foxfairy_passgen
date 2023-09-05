@@ -161,25 +161,23 @@ deserts = [
 ]
 
 while True:
-    print('(L)ong or (S)hort? or (Q)uit...')
+    print('Length (int) or (Q)uit...')
     x = input().lower()
 
-    if (x == "l"):
+    if (x.isnumeric() == True):
         os.system('clear')
         start = random.choice(types_start)
-
-        rand_one = random.randint(0, 2)
-
-        if (rand_one == 0):
+        dice = random.randint(0, 2)
+        if (dice == 0):
             mid = random.choice(vegetables)
-        elif (rand_one == 1):
+        elif (dice == 1):
             mid = random.choice(fruits)
         else:
             mid = random.choice(meats)
+        
+        dice = random.randint(0, 1)
 
-        rand_one = random.randint(0, 1)
-
-        if (rand_one == 0):
+        if (dice == 0):
             end = random.choice(types_end)
         else:
             end = random.choice(deserts)
@@ -191,80 +189,43 @@ while True:
 
         count = len(vowels)
         crypt = merged
+        print("base: " + crypt)
         for c in range(int(count)):
+            dice = random.randint(0, 1)
             crypt = crypt.replace(vowels[c], nrs[c])
-                                       
-        print(merged)
-        print(crypt)
-        print()
-        print()
-        print()
-
-
-    elif (x == "s"):
-        os.system('clear')
-        rand_one = random.randint(0, 1)
-
-        if (rand_one == 0):
-            start = random.choice(types_start)  
-
-            rand_one = random.randint(0, 2)
-
-            if (rand_one == 0):
-                mid = random.choice(vegetables)
-            elif (rand_one == 1):
-                mid = random.choice(fruits)
-            else:
-                mid = random.choice(meats)
-
             
-            merged = start + mid
+        print("alnu: " + crypt)            
 
-            vowels = ['a', 'e', 'i', 'o', 'u']
-            nrs = ['4', '3', '1', '0', '_']
+        while (int(x) < len(crypt)):
+            random_index = random.randrange(len(crypt))
+            crypt = crypt[:random_index] + crypt[random_index+1:]
 
-            count = len(vowels)
-            crypt = merged
-            for c in range(int(count)):
-                crypt = crypt.replace(vowels[c], nrs[c])
-                                        
-            print(merged)
-            print(crypt)
-            print()
-            print()
-            print()
-            print()
-        else:
-            os.system('clear')
-            rand_one = random.randint(0, 2)
+        while (int(x) > len(crypt)):
+            random_char = random.choice("1234567890!@#$^&*()_?abcdefghijklmnopqrstuvwxyz")
+            random_index = random.randrange(len(crypt) + 1)
+            crypt = crypt[:random_index] + random_char + crypt[random_index:]
 
-            if (rand_one == 0):
-                start = random.choice(vegetables)
-            elif (rand_one == 1):
-                start = random.choice(fruits)
-            else:
-                start = random.choice(meats)
-            
-            if (rand_one == 0):
-                end = random.choice(types_end)
-            else:
-                end = random.choice(deserts)
 
-            vowels = ['a', 'e', 'i', 'o', 'u']
-            nrs = ['4', '3', '1', '0', '_']
-            merged = start + end
-            count = len(vowels)
-            crypt = merged
-            for c in range(int(count)):
-                crypt = crypt.replace(vowels[c], nrs[c])
-                                        
-            print(merged)
-            print(crypt)            
-            print()
-            print()
-            print()
-            print()
-   
+
+        crypt = ''.join(random.choice([str.upper, str.lower])(char) for char in crypt)
+        line = len(crypt) + 6
+        line = "-" * line
+        print(line)
+        print("case: " + crypt)
+
+        for i in range(3):
+            random_char = random.choice("!@#$^&*()_?")
+            random_index = random.randrange(0, len(crypt))
+            crypt = list(crypt)
+            crypt[random_index] = random_char
+            crypt = "".join(crypt)
+
+        print("spec: " + crypt)
+        print()
+        print()
+
+        # break
+
     elif (x == "q"):
         break
 
